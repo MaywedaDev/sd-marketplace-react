@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Signin from "../pages/auth/signin";
 
 export default function AppRoutes() {
   return (
@@ -7,6 +8,7 @@ export default function AppRoutes() {
       <Route path="/" element={<div>Home</div>} />
       <Route path="/about" element={<div>About</div>} />
       <Route path="/contact" element={<div>Contact</div>} />
+      <Route path="/signup" element={<Signin />} />
       {/* Add more routes as needed */}
     </Routes>
   );

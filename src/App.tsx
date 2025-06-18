@@ -8,29 +8,19 @@ function App() {
     <>
       {/* Create Routes */}
       <Router>
-        <div className="App">
+        <div className="App w-full h-screen flex flex-col items-center justify-center">
           <header className="App-header">
             <h1 className="text-3xl font-bold underline text-red-500">
               Welcome to My App
             </h1>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-                <li>
-                  <Link to="/contact">Contact</Link>
-                </li>
-              </ul>
-            </nav>
           </header>
           {/* Add Routes here */}
+          <div className="max-w-[400px] w-full">
+            <AppRoutes />
+          </div>
         </div>
         {/* Add Route Components here */}
-        <AppRoutes />
+
         <footer>
           <p>&copy; 2023 My App</p>
         </footer>
