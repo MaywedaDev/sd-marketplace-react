@@ -1,0 +1,75 @@
+// @import './variables';
+// @import './mixins';
+// @import './reset';
+// @import './typography';
+// @import './layout';
+// @import './components/button';
+// @import './components/card';
+// @import './components/form';
+
+// Layout utilities
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+// Flex utilities
+.flex {
+  display: flex;
+
+  &-center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-between {
+    justify-content: space-between;
+  }
+}
+
+// Spacing utilities
+.mt {
+  &-sm {
+    margin-top: $spacing-sm;
+  }
+  &-md {
+    margin-top: $spacing-md;
+  }
+  &-lg {
+    margin-top: $spacing-lg;
+  }
+}
+
+.mb {
+  &-sm {
+    margin-bottom: $spacing-sm;
+  }
+  &-md {
+    margin-bottom: $spacing-md;
+  }
+  &-lg {
+    margin-bottom: $spacing-lg;
+  }
+}
+
+// Text utilities
+.text {
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-left {
+    text-align: left;
+  }
+}
+
+// Display utilities
+.hidden {
+  display: none;
+}
+.block {
+  display: block;
+}
