@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Signin from "../pages/auth/signin";
+import Signin from "@/pages/auth/signin";
 
 export default function AppRoutes() {
   return (
