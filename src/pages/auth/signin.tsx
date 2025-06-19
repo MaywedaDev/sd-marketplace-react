@@ -6,18 +6,19 @@ import SubmitButton from "@/components/Form/SubmitButton";
 
 export default function Signin() {
   return (
-    <div className="w-full flex flex-col">
-      <div className="px-6 flex gap-4 items-center h-[72px]">
+    <div className="w-full h-full flex flex-col bg-body-2">
+      <div className="px-6 flex gap-4 items-center h-[72px] bg-white">
         <Icon icon="mdi:arrow-left" height={20} />
 
-        <h3 className="mx-auto font-medium">SIGN UP</h3>
+        <h3 className="mx-auto font-medium">Sign up</h3>
       </div>
-      <Form.Root className="w-full flex flex-col space-y-4 px-6">
+      <Form.Root className="w-full flex flex-col space-y-4 px-6 my-6">
         <FormInput
           name="name"
           type="text"
           label="Name"
           required
+          contentClassNames="p-3 rounded-lg border border-gray-300 bg-white"
           messages={{ valueMissing: "Name is required" }}
         />
         <FormInput
@@ -25,6 +26,7 @@ export default function Signin() {
           type="email"
           label="Email"
           required
+          contentClassNames="p-3 rounded-lg border border-gray-300 bg-white"
           messages={{ valueMissing: "Email is required" }}
         />
 
@@ -33,6 +35,7 @@ export default function Signin() {
           type="password"
           label="Password"
           required
+          contentClassNames="p-3 rounded-lg border border-gray-300 bg-white"
           messages={{ valueMissing: "Password is required" }}
         />
 

@@ -35,7 +35,7 @@ export default function FormInput({
 }: FormInputProps) {
   return (
     <Form.Field name={name}>
-      <div className={containerClassNames || "w-full flex flex-col gap-3"}>
+      <div className={containerClassNames || "w-full flex flex-col gap-2"}>
         <Form.Label>{label}</Form.Label>
         <Form.Control asChild>
           <input
