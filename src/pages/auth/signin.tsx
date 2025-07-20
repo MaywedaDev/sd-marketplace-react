@@ -12,17 +12,9 @@ export default function Signin() {
           <Icon icon="mdi:arrow-left" height={24} />
         </div>
 
-        <h3 className="mx-auto font-semibold text-xl">Sign up</h3>
+        <h3 className="mx-auto font-semibold text-xl">Log In</h3>
       </div>
       <Form.Root className="w-full flex flex-col space-y-4 my-3">
-        <FormInput
-          name="name"
-          type="text"
-          label="Name"
-          required
-          contentClassNames="p-3 rounded-lg bg-form-bg border border-form-bg hover:bg-white outline-none hover:border-primary"
-          messages={{ valueMissing: "Name is required" }}
-        />
         <FormInput
           name="email"
           type="email"
@@ -41,7 +33,9 @@ export default function Signin() {
           messages={{ valueMissing: "Password is required" }}
         />
 
-        <SubmitButton text="Sign Up" />
+        <p className="font-semibold text-sm ">Forgot Password?</p>
+
+        <SubmitButton text="Log In" />
       </Form.Root>
 
       <div className="flex gap-4 items-center my-1">
@@ -51,21 +45,15 @@ export default function Signin() {
       </div>
 
       <div className="w-full py-4 flex flex-col gap-3">
-        <Button icon="mdi:apple">Sign up with Apple</Button>
+        <Button icon="mdi:apple">Log in with Apple</Button>
 
         <Button
           icon="flat-color-icons:google"
           className="bg-white !text-primary"
         >
-          Sign up with Google
+          Log in with Google
         </Button>
       </div>
-
-      <p className="text-[12px]">
-        By signing up, you are agreeing to our{" "}
-        <span className="text-primary">Terms & Conditions</span> and{" "}
-        <span className="text-primary">Privacy Policy.</span>
-      </p>
     </div>
   );
 }
