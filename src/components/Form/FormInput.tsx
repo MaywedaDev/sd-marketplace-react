@@ -35,12 +35,13 @@ export default function FormInput({
 }: FormInputProps) {
   return (
     <Form.Field name={name}>
-      <div className={containerClassNames || "w-full flex flex-col gap-2"}>
-        <Form.Label>{label}</Form.Label>
+      <div className={containerClassNames || "w-full flex flex-col gap-1"}>
+        <Form.Label className="font-medium">{label}</Form.Label>
         <Form.Control asChild>
           <input
             className={
-              contentClassNames || "p-3 rounded-lg border border-gray-300"
+              contentClassNames ||
+              "p-3 rounded-lg bg-form-bg hover:border hover:border-primary"
             }
             type={type || "text"}
             onChange={onChange}
