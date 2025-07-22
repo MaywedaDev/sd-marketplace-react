@@ -3,11 +3,12 @@ import { Route, Routes } from "react-router-dom";
 import Signin from "@/pages/auth/signin";
 import SignUp from "@/pages/auth/signup";
 import GetStarted from "@/pages/get-started";
+import Home from "@/pages";
 
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<div>Home</div>} />
+      <Route path="/" element={<Home />} />
       <Route path="/about" element={<div>About</div>} />
       <Route path="/contact" element={<div>Contact</div>} />
       <Route path="/signup" element={<SignUp />} />

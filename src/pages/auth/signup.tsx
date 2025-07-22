@@ -18,7 +18,14 @@ export default function SignUp() {
       </div>
       {stage < 1 ? (
         <>
-          <Form.Root className="w-full flex flex-col space-y-4 my-3">
+          <Form.Root
+            className="w-full flex flex-col space-y-4 my-3"
+            onSubmit={(e) => {
+              e.preventDefault();
+              // Handle form submission logic here
+              setStage(1);
+            }}
+          >
             <FormInput
               name="name"
               type="text"
