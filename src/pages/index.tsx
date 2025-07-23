@@ -10,12 +10,12 @@ type SelectItemProps = {
 };
 
 export default function Home() {
-  const [stage, setStage] = React.useState(1);
+  const [stage] = React.useState(1);
 
   if (stage === 1) {
     return (
       <div className="w-full h-full px-4 flex flex-col">
-        <div className="w-full py-4 justify-between flex">
+        <div className="w-full py-6 justify-between items-center flex">
           <h2 className="text-xl font-bold">Logo Ipsum</h2>
 
           <Select.Root>
