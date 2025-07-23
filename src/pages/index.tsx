@@ -1,7 +1,43 @@
 import Button from "@/components/Shared/Button";
+import { Select } from "radix-ui";
 import React from "react";
 
 export default function Home() {
+  const [stage, setStage] = React.useState(1);
+
+  if (stage === 1) {
+    return (
+      <div className="w-full h-full px-4 flex flex-col">
+        <div className="w-full py-4 justify-between">
+          <h2 className="text-xl font-bold">Logo Ipsum</h2>
+
+          <Select.Root>
+            <Select.Trigger className="bg-white border border-gray-300 rounded-lg p-2">
+              <Select.Value placeholder="Select an option" />
+            </Select.Trigger>
+            <Select.Portal>
+              <Select.Content className="bg-white border border-gray-300 rounded-lg shadow-lg">
+                <Select.Viewport className="p-4">
+                  <Select.Group>
+                    <Select.Item className="text-primary" value="option1">
+                      Option 1
+                    </Select.Item>
+                    <Select.Item className="text-primary" value="option2">
+                      Option 2
+                    </Select.Item>
+                    <Select.Item className="text-primary" value="option3">
+                      Option 3
+                    </Select.Item>
+                  </Select.Group>
+                </Select.Viewport>
+              </Select.Content>
+            </Select.Portal>
+          </Select.Root>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full h-full px-4 flex flex-col">
       <div className="my-12">
