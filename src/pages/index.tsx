@@ -1,6 +1,13 @@
 import Button from "@/components/Shared/Button";
+import { Icon } from "@iconify/react";
 import { Select } from "radix-ui";
 import React from "react";
+
+type SelectItemProps = {
+  children: React.ReactNode;
+  className?: string;
+  value: string;
+};
 
 export default function Home() {
   const [stage, setStage] = React.useState(1);
@@ -8,7 +15,7 @@ export default function Home() {
   if (stage === 1) {
     return (
       <div className="w-full h-full px-4 flex flex-col">
-        <div className="w-full py-4 justify-between">
+        <div className="w-full py-4 justify-between flex">
           <h2 className="text-xl font-bold">Logo Ipsum</h2>
 
           <Select.Root>
@@ -16,18 +23,12 @@ export default function Home() {
               <Select.Value placeholder="Select an option" />
             </Select.Trigger>
             <Select.Portal>
-              <Select.Content className="bg-white border border-gray-300 rounded-lg shadow-lg">
+              <Select.Content className="bg-white border border-gray-300 rounded-lg shadow-lg min-w-[200px]">
                 <Select.Viewport className="p-4">
                   <Select.Group>
-                    <Select.Item className="text-primary" value="option1">
-                      Option 1
-                    </Select.Item>
-                    <Select.Item className="text-primary" value="option2">
-                      Option 2
-                    </Select.Item>
-                    <Select.Item className="text-primary" value="option3">
-                      Option 3
-                    </Select.Item>
+                    <SelectItem value="option1">Mega Campus</SelectItem>
+                    <SelectItem value="option2">Main Campus</SelectItem>
+                    <SelectItem value="option3">Mini Campus</SelectItem>
                   </Select.Group>
                 </Select.Viewport>
               </Select.Content>
@@ -62,3 +63,20 @@ export default function Home() {
     </div>
   );
 }
+
+const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
+  ({ children, className, ...props }, forwardedRef) => {
+    return (
+      <Select.Item
+        className={`text-text-secondary ${className} flex py-1 gap-3 whitespace-nowrap`}
+        {...props}
+        ref={forwardedRef}
+      >
+        <Select.ItemIndicator className="SelectItemIndicator">
+          <Icon icon="mdi:check" />
+        </Select.ItemIndicator>
+        <Select.ItemText>{children}</Select.ItemText>
+      </Select.Item>
+    );
+  }
+);
