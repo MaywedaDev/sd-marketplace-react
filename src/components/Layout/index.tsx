@@ -10,9 +10,6 @@ const AppLayout: React.FC = () => {
       <main className="flex-1">
         <Outlet />
       </main>
-      <footer>
-        <p>&copy; {new Date().getFullYear()} SD Marketplace</p>
-      </footer>
     </div>
   );
 };
