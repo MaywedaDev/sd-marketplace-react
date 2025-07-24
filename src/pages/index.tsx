@@ -53,11 +53,27 @@ export default function Home() {
         <div className="w-full mb-2">
           <span className="font-medium text-lg">Furnitures</span>
           <div className="flex mb-2 gap-3">
-            <button className="p-2 rounded border border-gray-300 flex gap-3 items-center">
+            <button className="p-2 rounded border border-gray-300 flex gap-3 items-center font-medium">
               <Icon width={16} icon="mdi:bell-outline" />
               <span>Chair</span>
             </button>
+
+            <button className="p-2 rounded border border-gray-300 flex gap-3 items-center font-medium">
+              <Icon width={16} icon="mdi:bell-outline" />
+              <span>Table</span>
+            </button>
+
+            <button className="p-2 rounded border border-gray-300 flex gap-3 items-center font-medium">
+              <Icon width={16} icon="mdi:bell-outline" />
+              <span>Bed</span>
+            </button>
           </div>
+        </div>
+
+        <div className="w-full grid grid-cols-2 gap-5">
+          {[...Array(9).fill("Clothing")].map((text, index) => (
+            <ProductCard />
+          ))}
         </div>
       </div>
     );
@@ -104,3 +120,21 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     );
   }
 );
+
+const ProductCard = () => {
+  return (
+    <div className="p-2 bg-white border border-gray-300 flex flex-col rounded gap-1">
+      <div className="w-full rounded h-[150px] bg-[#d9d9d9]"></div>
+      <span className="font-medium">Casual Grey T-Shirt</span>
+      <span className="text-green-900 font-medium">N13000</span>
+      <div className="flex gap-1 items-center text-sm font-regular">
+        <Icon icon="mdi:location-outline" />
+        <span>Mega Campus</span>
+      </div>
+      <div className="w-full flex justify-between items-center">
+        <div className="text-xs py-1 px-4 rounded bg-gray-300">Used</div>
+        <Icon icon="mdi:heart-outline" width={24} />
+      </div>
+    </div>
+  );
+};
