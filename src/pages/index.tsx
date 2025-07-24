@@ -1,6 +1,7 @@
+import FormInput from "@/components/Form/FormInput";
 import Button from "@/components/Shared/Button";
 import { Icon } from "@iconify/react";
-import { Select } from "radix-ui";
+import { Form, Select } from "radix-ui";
 import React from "react";
 
 type SelectItemProps = {
@@ -15,11 +16,11 @@ export default function Home() {
   if (stage === 1) {
     return (
       <div className="w-full h-full px-4 flex flex-col">
-        <div className="w-full py-6 justify-between items-center flex">
-          <h2 className="text-xl font-bold">Logo Ipsum</h2>
+        <div className="w-full py-6 items-center flex gap-4">
+          <h2 className="text-xl font-bold mr-auto">Logo Ipsum</h2>
 
           <Select.Root>
-            <Select.Trigger className="bg-white border border-gray-300 rounded-lg p-2">
+            <Select.Trigger className="bg-white border border-gray-300 rounded p-2">
               <Select.Value placeholder="Select an option" />
             </Select.Trigger>
             <Select.Portal>
@@ -34,6 +35,29 @@ export default function Home() {
               </Select.Content>
             </Select.Portal>
           </Select.Root>
+
+          <button className="p-2 rounded border border-gray-300">
+            <Icon width={24} icon="mdi:bell-outline" />
+          </button>
+        </div>
+        <Form.Root>
+          <FormInput
+            name="Search"
+            type="text"
+            placeholder="Search for items..."
+            contentClassNames="bg-white border-gray-300 hover:border-gray-300"
+            appendIcon="mdi:magnify"
+          />
+        </Form.Root>
+
+        <div className="w-full mb-2">
+          <span className="font-medium text-lg">Furnitures</span>
+          <div className="flex mb-2 gap-3">
+            <button className="p-2 rounded border border-gray-300 flex gap-3 items-center">
+              <Icon width={16} icon="mdi:bell-outline" />
+              <span>Chair</span>
+            </button>
+          </div>
         </div>
       </div>
     );
