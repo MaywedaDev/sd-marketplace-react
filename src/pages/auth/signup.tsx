@@ -4,9 +4,10 @@ import FormInput from "@/components/Form/FormInput";
 import SubmitButton from "@/components/Form/SubmitButton";
 import Button from "@/components/Shared/Button";
 import { useState } from "react";
+import { SupabaseClient } from "@supabase/supabase-js";
 
 export default function SignUp() {
-  const [stage, setStage] = useState<0 | 1>(1);
+  const [stage, setStage] = useState<0 | 1>(0);
   return (
     <div className="w-full h-full flex flex-col bg-body px-4">
       <div className="flex gap-4 items-center h-[72px] relative">
