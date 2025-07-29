@@ -1,5 +1,4 @@
 import React from "react";
-import { Form } from "radix-ui";
 import { Icon } from "@iconify/react";
 
 type FormInputProps = {
@@ -39,29 +38,28 @@ export default function FormInput({
   appendIcon,
 }: FormInputProps) {
   return (
-    <Form.Field name={name}>
-      <div className={containerClassNames || "w-full flex flex-col gap-1"}>
-        {label && <Form.Label className="font-medium">{label}</Form.Label>}
-        <Form.Control asChild>
-          <div
-            className={`w-full flex p-3 rounded-lg bg-form-bg hover:border hover:bg-white hover:border-primary ${contentClassNames}`}
-          >
-            {prependIcon && <Icon icon={prependIcon} width={20} />}
-            <input
-              className={"h-full w-full outline-none"}
-              type={type || "text"}
-              onChange={onChange}
-              placeholder={placeholder || `Enter your ${name}`}
-              required={required}
-              value={value}
-              disabled={disabled}
-            />
-            {appendIcon && <Icon icon={appendIcon} width={20} />}
-          </div>
-        </Form.Control>
-        {messages && (
-          <>
-            {messages.valueMissing && (
+    <div className={containerClassNames || "w-full flex flex-col gap-1"}>
+      {label && <span className="font-medium">{label}</span>}
+
+      <div
+        className={`w-full flex p-3 rounded-lg bg-form-bg hover:border hover:bg-white hover:border-primary ${contentClassNames}`}
+      >
+        {prependIcon && <Icon icon={prependIcon} width={20} />}
+        <input
+          name={name}
+          className={"h-full w-full outline-none"}
+          type={type || "text"}
+          onChange={onChange}
+          placeholder={placeholder || `Enter your ${name}`}
+          required={required}
+          value={value}
+          disabled={disabled}
+        />
+        {appendIcon && <Icon icon={appendIcon} width={20} />}
+      </div>
+      {messages && (
+        <>
+          {/* {messages.valueMissing && (
               <Form.Message match="valueMissing">
                 {messages.valueMissing}
               </Form.Message>
@@ -75,10 +73,9 @@ export default function FormInput({
               <Form.Message match="patternMismatch">
                 {messages.patternMismatch}
               </Form.Message>
-            )}
-          </>
-        )}
-      </div>
-    </Form.Field>
+            )} */}
+        </>
+      )}
+    </div>
   );
 }

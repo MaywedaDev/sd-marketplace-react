@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { Form } from "radix-ui";
+
 import FormInput from "@/components/Form/FormInput";
 import SubmitButton from "@/components/Form/SubmitButton";
 import Button from "@/components/Shared/Button";
@@ -40,12 +40,13 @@ export default function SignUp() {
       </div>
       {stage < 1 ? (
         <>
-          <Form.Root
+          <form
             className="w-full flex flex-col space-y-4 my-3"
             onSubmit={(e) => {
               e.preventDefault();
+              console.log(Object.entries(e.currentTarget));
               // Handle form submission logic here
-              setStage(1);
+              signUp(form.email, form.password);
             }}
           >
             <FormInput
@@ -86,7 +87,7 @@ export default function SignUp() {
               }
               text="Sign Up"
             />
-          </Form.Root>
+          </form>
 
           <div className="flex gap-4 items-center my-1">
             <div className="flex-grow border-t border-black"></div>
