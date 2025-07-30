@@ -6,12 +6,6 @@ import Button from "@/components/Shared/Button";
 import { useState } from "react";
 import supabase from "@/lib/supabase";
 
-const signUp = (email: string, password: string) => {
-  supabase.auth.signUp({
-    email,
-    password,
-  });
-};
 export default function SignUp() {
   const [stage, setStage] = useState<0 | 1>(0);
 
