@@ -4,7 +4,7 @@ import FormInput from "@/components/Form/FormInput";
 import SubmitButton from "@/components/Form/SubmitButton";
 import Button from "@/components/Shared/Button";
 import { useState } from "react";
-import supabase from "@/lib/supabase";
+import { signUp } from "@/lib/auth";
 
 export default function SignUp() {
   const [stage, setStage] = useState<0 | 1>(0);
@@ -36,11 +36,12 @@ export default function SignUp() {
         <>
           <form
             className="w-full flex flex-col space-y-4 my-3"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
               console.log(Object.entries(e.currentTarget));
               // Handle form submission logic here
-              signUp(form.email, form.password);
+              await signUp(form.name, form.email, form.password);
+              setStage(1);
             }}
           >
             <FormInput
@@ -109,11 +110,11 @@ export default function SignUp() {
       ) : (
         <>
           <div className="w-full">
-            <h4 className="text-lg font-semibold">Confirmation Code</h4>
+            <h4 className="text-lg font-semibold">Verify Email</h4>
             <p className="text-sm text-text-secondary">
-              Enter the code sent to your email (ogun*****gmail.com)
+              A verification link was sent to your email (${form.email})
             </p>
-            <div className="w-full my-6">
+            {/* <div className="w-full my-6">
               <div className="flex gap-3">
                 <input className="h-18 w-12 rounded-lg bg-form-bg border border-form-bg focus:bg-white focus:border-primary outline-0 text-3xl text-center" />
                 <input className="h-18 w-12 rounded-lg bg-form-bg border border-form-bg focus:bg-white focus:border-primary outline-0 text-3xl text-center" />
@@ -124,7 +125,7 @@ export default function SignUp() {
               </div>
               <p className="text-sm my-2">Resend code via email</p>
             </div>
-            <Button>Continue</Button>
+            <Button>Continue</Button> */}
           </div>
         </>
       )}

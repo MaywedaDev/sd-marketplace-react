@@ -2,6 +2,7 @@ import supabase from "./supabase";
 import type { UserAuthResponse } from "@/models/interfaces";
 
 export const signUp = async (
+  name: string,
   email: string,
   password: string
 ): Promise<UserAuthResponse> => {
@@ -9,6 +10,11 @@ export const signUp = async (
     const res = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        data: {
+          userName: name,
+        },
+      },
     });
     const { data, error } = res;
     if (data) {
