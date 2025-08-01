@@ -14,7 +14,7 @@ export default function Signin() {
 
         <h3 className="mx-auto font-semibold text-xl">Log In</h3>
       </div>
-      <Form.Root className="w-full flex flex-col space-y-4 my-3">
+      <form className="w-full flex flex-col space-y-4 my-3">
         <FormInput
           name="email"
           type="email"
@@ -36,7 +36,7 @@ export default function Signin() {
         <p className="font-semibold text-sm ">Forgot Password?</p>
 
         <SubmitButton text="Log In" />
-      </Form.Root>
+      </form>
 
       <div className="flex gap-4 items-center my-1">
         <div className="flex-grow border-t border-black"></div>
