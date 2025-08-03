@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react";
-import { Form } from "radix-ui";
 import FormInput from "@/components/Form/FormInput";
 import SubmitButton from "@/components/Form/SubmitButton";
 import Button from "@/components/Shared/Button";
