@@ -72,7 +72,7 @@ export default function Home() {
 
         <div className="w-full grid grid-cols-2 gap-5">
           {[...Array(9).fill("Clothing")].map((text, index) => (
-            <ProductCard />
+            <ProductCard key={index} />
           ))}
         </div>
       </div>
