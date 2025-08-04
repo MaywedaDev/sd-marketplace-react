@@ -40,8 +40,17 @@ export default function SignUp() {
               e.preventDefault();
               console.log(Object.entries(e.currentTarget));
               // Handle form submission logic here
-              await signUp(form.name, form.email, form.password);
-              setStage(1);
+              const { success, message } = await signUp(
+                form.name,
+                form.email,
+                form.password
+              );
+
+              if (success) {
+                setStage(1);
+              } else {
+                console.log(message);
+              }
             }}
           >
             <FormInput
