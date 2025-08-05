@@ -2,8 +2,21 @@ import { Icon } from "@iconify/react";
 import FormInput from "@/components/Form/FormInput";
 import SubmitButton from "@/components/Form/SubmitButton";
 import Button from "@/components/Shared/Button";
+import { useState } from "react";
 
 export default function Signin() {
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
   return (
     <div className="w-full h-full flex flex-col bg-body px-4">
       <div className="flex gap-4 items-center h-[72px] relative">
@@ -18,6 +31,8 @@ export default function Signin() {
           name="email"
           type="email"
           label="Email"
+          value={form.email}
+          onChange={handleInput}
           required
           contentClassNames="p-3 rounded-lg bg-form-bg border border-form-bg hover:bg-white outline-none hover:border-primary"
           messages={{ valueMissing: "Email is required" }}
@@ -27,6 +42,8 @@ export default function Signin() {
           name="password"
           type="password"
           label="Password"
+          value={form.password}
+          onChange={handleInput}
           required
           contentClassNames="p-3 rounded-lg bg-form-bg border border-form-bg hover:bg-white outline-none hover:border-primary"
           messages={{ valueMissing: "Password is required" }}
