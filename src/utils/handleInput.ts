@@ -1,6 +1,11 @@
-const handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {
+import type React from "react";
+
+const handleInput = (
+  e: React.ChangeEvent<HTMLInputElement>,
+  cb: React.Dispatch<React.SetStateAction<unknown>>
+) => {
   const { name, value } = e.target;
-  setForm((prev) => ({
+  cb((prev) => ({
     ...prev,
     [name]: value,
   }));
