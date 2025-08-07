@@ -7,3 +7,9 @@ export interface UserAuthResponse {
   session: Session | null;
   status: number | null;
 }
+
+export interface AuthFormField {
+  email: string;
+  password: string;
+  userName?: string;
+}
