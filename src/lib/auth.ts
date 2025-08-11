@@ -59,25 +59,19 @@ export const signUp = async (
 };
 
 export const signIn = async (
-  name: string,
   email: string,
   password: string
 ): Promise<UserAuthResponse> => {
   try {
-    const res = await supabase.auth.signUp({
+    const res = await supabase.auth.signInWithPassword({
       email,
       password,
-      options: {
-        data: {
-          userName: name,
-        },
-      },
     });
     const { data, error } = res;
     if (data) {
       const { user, session } = data;
       return {
-        message: "User signed up succesfully",
+        message: "User signed in succesfully",
         success: true,
         user,
         session,
