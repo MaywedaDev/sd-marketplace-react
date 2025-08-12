@@ -71,7 +71,7 @@ export const signIn = async (
     if (data) {
       const { user, session } = data;
       return {
-        message: "User signed in succesfully",
+        message: "User logged in succesfully",
         success: true,
         user,
         session,
@@ -82,7 +82,7 @@ export const signIn = async (
       const { message, status } = error;
 
       return {
-        message: `User sign up failed: ${message}`,
+        message: `User log in failed: ${message}`,
         success: false,
         user: null,
         session: null,
