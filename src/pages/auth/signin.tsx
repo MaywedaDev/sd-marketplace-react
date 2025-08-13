@@ -3,12 +3,16 @@ import FormInput from "@/components/Form/FormInput";
 import SubmitButton from "@/components/Form/SubmitButton";
 import Button from "@/components/Shared/Button";
 import { useState } from "react";
+import { signIn } from "@/lib/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Signin() {
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {
     const { name, value } = e.target;
@@ -26,7 +30,24 @@ export default function Signin() {
 
         <h3 className="mx-auto font-semibold text-xl">Log In</h3>
       </div>
-      <form className="w-full flex flex-col space-y-4 my-3">
+      <form
+        className="w-full flex flex-col space-y-4 my-3"
+        onSubmit={async (e) => {
+          e.preventDefault();
+          // Handle form submission logic here
+          const { success, message } = await signIn(form.email, form.password);
+
+          console.log(success, message);
+
+          if (success) {
+            // Handle successful login, e.g., redirect or show a success message
+            navigate("/");
+          } else {
+            console.log(message);
+            alert(message);
+          }
+        }}
+      >
         <FormInput
           name="email"
           type="email"
