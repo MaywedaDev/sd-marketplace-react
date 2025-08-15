@@ -8,7 +8,7 @@ function App() {
       {/* Create Routes */}
       <Router>
         <div className="w-full min-h-screen flex justify-center items-center">
-          <div className="max-w-[400px] h-[850px] w-full border-2 border-gray-300 rounded-xl overflow-hidden shadow-lg flex flex-col my-8">
+          <div className="max-w-[400px] h-[850px] w-full border-2 overflow-hidden flex flex-col">
             {/* Router Components*/}
             <AppRoutes />
           </div>
