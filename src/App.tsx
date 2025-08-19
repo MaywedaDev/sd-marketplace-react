@@ -1,10 +1,11 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import "@/App.css";
 import AppRoutes from "@/routes";
+import { AuthContextProvider } from "@/context/AuthContextProvider";
 
 function App() {
   return (
-    <>
+    <AuthContextProvider>
       {/* Create Routes */}
       <Router>
         <div className="w-full min-h-screen flex justify-center items-center">
@@ -14,7 +15,7 @@ function App() {
           </div>
         </div>
       </Router>
-    </>
+    </AuthContextProvider>
   );
 }
 
