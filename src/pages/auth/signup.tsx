@@ -1,9 +1,10 @@
 import { Icon } from "@iconify/react";
+import { useState, useRef } from "react";
+import type { ChangeEvent, KeyboardEvent } from "react";
 
 import FormInput from "@/components/Form/FormInput";
 import SubmitButton from "@/components/Form/SubmitButton";
 import Button from "@/components/Shared/Button";
-import { useState } from "react";
 import { signUp } from "@/lib/auth";
 
 export default function SignUp() {
@@ -15,12 +16,45 @@ export default function SignUp() {
     password: "",
   });
 
+  const [otp, setOtp] = useState<string[]>(new Array(6).fill(""));
+
+  const otpRefs = [
+    useRef<HTMLInputElement>(null),
+    useRef<HTMLInputElement>(null),
+    useRef<HTMLInputElement>(null),
+    useRef<HTMLInputElement>(null),
+    useRef<HTMLInputElement>(null),
+    useRef<HTMLInputElement>(null),
+  ];
+
   const handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleOtpChange = (index: number, e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (isNaN(Number(value))) return;
+
+    setOtp((prev) => {
+      const newOtp = [...prev];
+      newOtp[index] = value.substring(value.length - 1);
+      return newOtp;
+    });
+
+    // Move to next input if value exists
+    if (value && index < 5) {
+      otpRefs[index + 1].current?.focus();
+    }
+  };
+
+  const handleKeyDown = (index: number, e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Backspace" && !otp[index] && index > 0) {
+      otpRefs[index - 1].current?.focus();
+    }
   };
 
   return (
@@ -123,18 +157,32 @@ export default function SignUp() {
             <p className="text-sm text-text-secondary">
               A verification link was sent to your email (${form.email})
             </p>
-            {/* <div className="w-full my-6">
-              <div className="flex gap-3">
-                <input className="h-18 w-12 rounded-lg bg-form-bg border border-form-bg focus:bg-white focus:border-primary outline-0 text-3xl text-center" />
-                <input className="h-18 w-12 rounded-lg bg-form-bg border border-form-bg focus:bg-white focus:border-primary outline-0 text-3xl text-center" />
-                <input className="h-18 w-12 rounded-lg bg-form-bg border border-form-bg focus:bg-white focus:border-primary outline-0 text-3xl text-center" />
-                <input className="h-18 w-12 rounded-lg bg-form-bg border border-form-bg focus:bg-white focus:border-primary outline-0 text-3xl text-center" />
-                <input className="h-18 w-12 rounded-lg bg-form-bg border border-form-bg focus:bg-white focus:border-primary outline-0 text-3xl text-center" />
-                <input className="h-18 w-12 rounded-lg bg-form-bg border border-form-bg focus:bg-white focus:border-primary outline-0 text-3xl text-center" />
+            <div className="w-full my-6">
+              <div className="flex gap-3 otp-inputs">
+                {otp.map((digit, idx) => (
+                  <input
+                    key={idx}
+                    ref={otpRefs[idx]}
+                    type="text"
+                    inputMode="numeric"
+                    maxLength={1}
+                    value={digit}
+                    onChange={(e) => handleOtpChange(idx, e)}
+                    onKeyDown={(e) => handleKeyDown(idx, e)}
+                    className="h-18 w-12 rounded-lg bg-form-bg border border-form-bg focus:bg-white focus:border-primary outline-0 text-3xl text-center"
+                  />
+                ))}
               </div>
               <p className="text-sm my-2">Resend code via email</p>
             </div>
-            <Button>Continue</Button> */}
+            <Button
+              disabled={otp.some((el) => el === "")}
+              onClick={() => {
+                console.log(otp);
+              }}
+            >
+              Continue
+            </Button>
           </div>
         </>
       )}
