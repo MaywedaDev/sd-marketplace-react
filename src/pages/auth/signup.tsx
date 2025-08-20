@@ -73,7 +73,7 @@ export default function SignUp() {
             className="w-full flex flex-col space-y-4 my-3"
             onSubmit={async (e) => {
               e.preventDefault();
-              console.log(Object.entries(e.currentTarget));
+              // console.log(Object.entries(e.currentTarget));
               // Handle form submission logic here
               const { success, message } = await signUp(
                 form.name,

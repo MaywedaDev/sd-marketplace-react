@@ -5,7 +5,9 @@ export const createUserQuery = async (user: User) => {
   const { data, error } = await supabase
     .from("users")
     .insert([
-      { id: user.id, email: user.email, userName: user.user_metadata.userName },
+      {
+        user_id: user.id,
+      },
     ])
     .select();
 

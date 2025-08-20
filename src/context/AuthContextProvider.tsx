@@ -16,6 +16,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   useEffect(() => {
     // Assuming supabase is already initialized and imported
     const checkAuth = async () => {
+      console.log("Checking authentication status...");
       try {
         const currentUser = await getCurrentUser();
         if (currentUser) {

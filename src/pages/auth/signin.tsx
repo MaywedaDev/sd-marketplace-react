@@ -5,6 +5,7 @@ import Button from "@/components/Shared/Button";
 import { useState } from "react";
 import { signIn } from "@/lib/auth";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "@/hooks/useAuthContext";
 
 export default function Signin() {
   const [form, setForm] = useState({
@@ -13,6 +14,7 @@ export default function Signin() {
   });
 
   const navigate = useNavigate();
+  const { setUser, setIsLoggedIn } = useAuthContext();
 
   const handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {
     const { name, value } = e.target;
@@ -35,12 +37,17 @@ export default function Signin() {
         onSubmit={async (e) => {
           e.preventDefault();
           // Handle form submission logic here
-          const { success, message } = await signIn(form.email, form.password);
+          const { success, message, user } = await signIn(
+            form.email,
+            form.password
+          );
 
           console.log(success, message);
 
           if (success) {
             // Handle successful login, e.g., redirect or show a success message
+            setUser(user);
+            setIsLoggedIn(true);
             navigate("/");
           } else {
             console.log(message);

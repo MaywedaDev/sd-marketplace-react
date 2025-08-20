@@ -1,5 +1,7 @@
 import FormInput from "@/components/Form/FormInput";
 import Button from "@/components/Shared/Button";
+import { useAuthContext } from "@/hooks/useAuthContext";
+import { signOut } from "@/lib/auth";
 import { Icon } from "@iconify/react";
 import { Form, Select } from "radix-ui";
 import React from "react";
@@ -12,12 +14,26 @@ type SelectItemProps = {
 
 export default function Home() {
   const [stage] = React.useState(1);
+  const { setUser, setIsLoggedIn } = useAuthContext();
+
+  const signOutUser = async () => {
+    const { message, success } = await signOut();
+    if (success) {
+      setUser(null);
+      setIsLoggedIn(false);
+    }
+    console.log(message);
+  };
 
   if (stage === 1) {
     return (
       <div className="w-full h-full px-4 flex flex-col">
         <div className="w-full py-6 items-center flex gap-4">
-          <h2 className="text-xl font-bold mr-auto">Logo Ipsum</h2>
+          {/* Material Icon for signing out */}
+
+          <button onClick={signOutUser}>
+            <Icon icon="mdi:sign-out" height={24} />
+          </button>
 
           <Select.Root>
             <Select.Trigger className="bg-white border border-gray-300 rounded p-2">
