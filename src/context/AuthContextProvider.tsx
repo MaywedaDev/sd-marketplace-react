@@ -14,22 +14,22 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setIsLoading(true);
     // Assuming supabase is already initialized and imported
-    getCurrentUser()
-      .then((user) => {
-        if (user) {
-          setUser(user);
+    const checkAuth = async () => {
+      try {
+        const currentUser = await getCurrentUser();
+        if (currentUser) {
+          setUser(currentUser);
           setIsLoggedIn(true);
-        } else {
-          setUser(null);
-          setIsLoggedIn(false);
         }
-      })
-      .catch((error) => {
-        console.error("Error fetching current user:", error);
-      });
-    setIsLoading(false);
+      } catch (error) {
+        console.error("Authentication check failed:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkAuth();
   }, []);
 
   return (

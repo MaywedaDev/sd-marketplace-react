@@ -12,9 +12,18 @@ const AppLayout: React.FC = () => {
 
   // Logic for redirection based on authentication state can be added here
 
-  const { isLoggedIn } = useAuthContext();
+  const { isLoading, isLoggedIn } = useAuthContext();
 
-  if (!isLoggedIn) {
+  if (isLoading) {
+    // Show a loading state while checking authentication
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Loading...
+      </div>
+    );
+  }
+
+  if (!isLoading && !isLoggedIn) {
     // Redirect to sign-in page if not logged in
     return <Navigate to="/signin" replace />;
   }

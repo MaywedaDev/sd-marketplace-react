@@ -9,7 +9,7 @@ function App() {
       {/* Create Routes */}
       <Router>
         <div className="w-full min-h-screen flex justify-center items-center">
-          <div className="max-w-[400px] h-[850px] w-full border-2 overflow-hidden flex flex-col">
+          <div className="max-w-[400px] h-[850px] w-full overflow-hidden flex flex-col">
             {/* Router Components*/}
             <AppRoutes />
           </div>

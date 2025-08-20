@@ -4,7 +4,7 @@ import SubmitButton from "@/components/Form/SubmitButton";
 import Button from "@/components/Shared/Button";
 import { useState } from "react";
 import { signIn } from "@/lib/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Signin() {
   const [form, setForm] = useState({
@@ -91,6 +91,9 @@ export default function Signin() {
           Log in with Google
         </Button>
       </div>
+      <Link to="/signup" className="text-primary mt-4 text-center">
+        Don't have an account? Log in
+      </Link>
     </div>
   );
 }

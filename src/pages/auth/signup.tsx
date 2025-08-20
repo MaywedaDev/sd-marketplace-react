@@ -6,6 +6,7 @@ import FormInput from "@/components/Form/FormInput";
 import SubmitButton from "@/components/Form/SubmitButton";
 import Button from "@/components/Shared/Button";
 import { signUp } from "@/lib/auth";
+import { Link } from "react-router-dom";
 
 export default function SignUp() {
   const [stage, setStage] = useState<0 | 1>(0);
@@ -16,16 +17,16 @@ export default function SignUp() {
     password: "",
   });
 
-  const [otp, setOtp] = useState<string[]>(new Array(6).fill(""));
+  // const [otp, setOtp] = useState<string[]>(new Array(6).fill(""));
 
-  const otpRefs = [
-    useRef<HTMLInputElement>(null),
-    useRef<HTMLInputElement>(null),
-    useRef<HTMLInputElement>(null),
-    useRef<HTMLInputElement>(null),
-    useRef<HTMLInputElement>(null),
-    useRef<HTMLInputElement>(null),
-  ];
+  // const otpRefs = [
+  //   useRef<HTMLInputElement>(null),
+  //   useRef<HTMLInputElement>(null),
+  //   useRef<HTMLInputElement>(null),
+  //   useRef<HTMLInputElement>(null),
+  //   useRef<HTMLInputElement>(null),
+  //   useRef<HTMLInputElement>(null),
+  // ];
 
   const handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {
     const { name, value } = e.target;
@@ -35,27 +36,27 @@ export default function SignUp() {
     }));
   };
 
-  const handleOtpChange = (index: number, e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    if (isNaN(Number(value))) return;
+  // const handleOtpChange = (index: number, e: ChangeEvent<HTMLInputElement>) => {
+  //   const value = e.target.value;
+  //   if (isNaN(Number(value))) return;
 
-    setOtp((prev) => {
-      const newOtp = [...prev];
-      newOtp[index] = value.substring(value.length - 1);
-      return newOtp;
-    });
+  //   setOtp((prev) => {
+  //     const newOtp = [...prev];
+  //     newOtp[index] = value.substring(value.length - 1);
+  //     return newOtp;
+  //   });
 
-    // Move to next input if value exists
-    if (value && index < 5) {
-      otpRefs[index + 1].current?.focus();
-    }
-  };
+  //   // Move to next input if value exists
+  //   if (value && index < 5) {
+  //     otpRefs[index + 1].current?.focus();
+  //   }
+  // };
 
-  const handleKeyDown = (index: number, e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Backspace" && !otp[index] && index > 0) {
-      otpRefs[index - 1].current?.focus();
-    }
-  };
+  // const handleKeyDown = (index: number, e: KeyboardEvent<HTMLInputElement>) => {
+  //   if (e.key === "Backspace" && !otp[index] && index > 0) {
+  //     otpRefs[index - 1].current?.focus();
+  //   }
+  // };
 
   return (
     <div className="w-full h-full flex flex-col bg-body px-4">
@@ -144,6 +145,10 @@ export default function SignUp() {
             </Button>
           </div>
 
+          <Link to="/signin" className="text-primary mt-4 text-center">
+            Already have an account? Log in
+          </Link>
+
           <p className="text-[12px]">
             By signing up, you are agreeing to our{" "}
             <span className="text-primary">Terms & Conditions</span> and{" "}
@@ -157,7 +162,7 @@ export default function SignUp() {
             <p className="text-sm text-text-secondary">
               A verification link was sent to your email (${form.email})
             </p>
-            <div className="w-full my-6">
+            {/* <div className="w-full my-6">
               <div className="flex gap-3 otp-inputs">
                 {otp.map((digit, idx) => (
                   <input
@@ -174,15 +179,15 @@ export default function SignUp() {
                 ))}
               </div>
               <p className="text-sm my-2">Resend code via email</p>
-            </div>
-            <Button
+            </div> */}
+            {/* <Button
               disabled={otp.some((el) => el === "")}
               onClick={() => {
                 console.log(otp);
               }}
             >
               Continue
-            </Button>
+            </Button> */}
           </div>
         </>
       )}
