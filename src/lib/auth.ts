@@ -22,17 +22,17 @@ export const signUp = async (
     if (data) {
       const { user, session } = data;
       // Optionally, you can create a user record in your database
-      const { error: dbError } = await createUserQuery(user as User);
-      if (dbError) {
-        console.error("Error creating user in database:", dbError.message);
-        return {
-          message: "User created but failed to save in database",
-          success: false,
-          user: null,
-          session: null,
-          status: 500,
-        };
-      }
+      // const { error: dbError } = await createUserQuery(user as User);
+      // if (dbError) {
+      //   console.error("Error creating user in database:", dbError.message);
+      //   return {
+      //     message: "User created but failed to save in database",
+      //     success: false,
+      //     user: null,
+      //     session: null,
+      //     status: 500,
+      //   };
+      // }
 
       return {
         message: "User signed up successfully",
