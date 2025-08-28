@@ -1,7 +1,7 @@
 import supabase from "./supabase";
 import type { UserAuthResponse } from "@/models/interfaces";
 import type { User } from "@supabase/supabase-js";
-import { createUserQuery } from "./queries/user";
+// import { createUserQuery } from "./queries/user";
 
 export const signUp = async (
   name: string,
@@ -21,7 +21,7 @@ export const signUp = async (
     const { data, error } = res;
     if (data) {
       const { user, session } = data;
-      // Optionally, you can create a user record in your database
+      // // Optionally, you can create a user record in your database
       // const { error: dbError } = await createUserQuery(user as User);
       // if (dbError) {
       //   console.error("Error creating user in database:", dbError.message);

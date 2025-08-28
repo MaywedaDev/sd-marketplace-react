@@ -6,7 +6,8 @@ export const createUserQuery = async (user: User) => {
     .from("users")
     .insert([
       {
-        user_id: user.id,
+        id: user.id,
+        email: user.email,
       },
     ])
     .select();
