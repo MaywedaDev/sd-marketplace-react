@@ -20,6 +20,7 @@ type FormInputProps = {
   contentClassNames?: string;
   prependIcon?: string;
   appendIcon?: string;
+  onClickAppendIcon?: () => void;
 };
 
 export default function FormInput({
@@ -36,6 +37,7 @@ export default function FormInput({
   messages,
   prependIcon,
   appendIcon,
+  onClickAppendIcon,
 }: FormInputProps) {
   return (
     <div className={containerClassNames || "w-full flex flex-col gap-1"}>
@@ -55,7 +57,9 @@ export default function FormInput({
           value={value}
           disabled={disabled}
         />
-        {appendIcon && <Icon icon={appendIcon} width={20} />}
+        {appendIcon && (
+          <Icon onClick={onClickAppendIcon} icon={appendIcon} width={20} />
+        )}
       </div>
       {messages && (
         <>

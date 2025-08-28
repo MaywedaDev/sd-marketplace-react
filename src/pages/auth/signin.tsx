@@ -15,6 +15,7 @@ export default function Signin() {
 
   const navigate = useNavigate();
   const { setUser, setIsLoggedIn } = useAuthContext();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {
     const { name, value } = e.target;
@@ -68,13 +69,15 @@ export default function Signin() {
 
         <FormInput
           name="password"
-          type="password"
+          type={showPassword ? "text" : "password"}
           label="Password"
           value={form.password}
           onChange={handleInput}
           required
           contentClassNames="p-3 rounded-lg bg-form-bg border border-form-bg hover:bg-white outline-none hover:border-primary"
           messages={{ valueMissing: "Password is required" }}
+          appendIcon={showPassword ? "mdi:eye-off" : "mdi:eye"}
+          onClickAppendIcon={() => setShowPassword((prev) => !prev)}
         />
 
         <p className="font-semibold text-sm ">Forgot Password?</p>

@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
-import { useState, useRef } from "react";
-import type { ChangeEvent, KeyboardEvent } from "react";
+import { useState } from "react";
+// import type { ChangeEvent, KeyboardEvent } from "react";
 
 import FormInput from "@/components/Form/FormInput";
 import SubmitButton from "@/components/Form/SubmitButton";
@@ -10,11 +10,13 @@ import { Link } from "react-router-dom";
 
 export default function SignUp() {
   const [stage, setStage] = useState<0 | 1>(0);
+  const [showPassword, setShowPassword] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
   // const [otp, setOtp] = useState<string[]>(new Array(6).fill(""));
@@ -111,13 +113,28 @@ export default function SignUp() {
 
             <FormInput
               name="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               label="Password"
               value={form.password}
               onChange={handleInput}
               required
               contentClassNames="p-3 rounded-lg bg-form-bg border border-form-bg hover:bg-white outline-none hover:border-primary"
               messages={{ valueMissing: "Password is required" }}
+              appendIcon={showPassword ? "mdi:eye-off" : "mdi:eye"}
+              onClickAppendIcon={() => setShowPassword((prev) => !prev)}
+            />
+
+            <FormInput
+              name="confirmPassword"
+              type={showPassword ? "text" : "password"}
+              label="Confirm Password"
+              value={form.confirmPassword}
+              onChange={handleInput}
+              required
+              contentClassNames="p-3 rounded-lg bg-form-bg border border-form-bg hover:bg-white outline-none hover:border-primary"
+              messages={{ valueMissing: "Password is required" }}
+              appendIcon={showPassword ? "mdi:eye-off" : "mdi:eye"}
+              onClickAppendIcon={() => setShowPassword((prev) => !prev)}
             />
 
             <SubmitButton
