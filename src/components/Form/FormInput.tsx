@@ -61,25 +61,6 @@ export default function FormInput({
           <Icon onClick={onClickAppendIcon} icon={appendIcon} width={20} />
         )}
       </div>
-      {messages && (
-        <>
-          {/* {messages.valueMissing && (
-              <Form.Message match="valueMissing">
-                {messages.valueMissing}
-              </Form.Message>
-            )}
-            {messages.typeMismatch && (
-              <Form.Message match="typeMismatch">
-                {messages.typeMismatch}
-              </Form.Message>
-            )}
-            {messages.patternMismatch && (
-              <Form.Message match="patternMismatch">
-                {messages.patternMismatch}
-              </Form.Message>
-            )} */}
-        </>
-      )}
     </div>
   );
 }
