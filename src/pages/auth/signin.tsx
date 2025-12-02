@@ -43,16 +43,13 @@ export default function Signin() {
             form.password
           );
 
-          console.log(success, message);
+          console.log(message);
 
           if (success) {
             // Handle successful login, e.g., redirect or show a success message
             setUser(user);
             setIsLoggedIn(true);
             navigate("/");
-          } else {
-            console.log(message);
-            alert(message);
           }
         }}
       >
@@ -102,7 +99,7 @@ export default function Signin() {
         </Button>
       </div>
       <Link to="/signup" className="text-primary mt-4 text-center">
-        Don't have an account? Log in
+        Don't have an account? Sign up
       </Link>
     </div>
   );

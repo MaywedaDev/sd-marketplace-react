@@ -83,6 +83,8 @@ export default function SignUp() {
                 form.password
               );
 
+              console.log(message);
+
               if (success) {
                 setStage(1);
               } else {
